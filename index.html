@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>10 Motivos para te Amar ❤️</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+    h1 {
+      color: #b30059;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+    li {
+      background: white;
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 18px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    li.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #extra {
+      display: none;
+      background: #ffe6f0;
+      border: 2px solid #b30059;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #b30059;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e60073;
+    }
+    footer {
+      margin-top: 40px;
+      font-style: italic;
+      color: #555;
+    }
+    /* Corações animados */
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: red;
+      font-size: 24px;
+      animation: fall linear forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 10 Motivos para te Amar 💖</h1>
+  <ul>
+    <li>1. Seu sorriso ilumina meu dia ✨</li>
+    <li>2. Você sempre me apoia 💪</li>
+    <li>3. É a pessoa mais carinhosa que conheço 🥰</li>
+    <li>4. Adoro nossas conversas sem fim 🗨️</li>
+    <li>5. Sua presença me acalma 🌙</li>
+    <li>6. Você me inspira a ser melhor 🌟</li>
+    <li>7. Amo o jeito que você se preocupa comigo 💌</li>
+    <li>8. Sua risada é minha música favorita 🎶</li>
+    <li>9. Você transforma momentos simples em especiais 🌸</li>
+    <li>10. Porque te amo do jeitinho que você é ❤️</li>
+    <li id="extra">🌹 Motivo Extra: Porque eu quero passar a vida inteira ao seu lado ❤️</li>
+  </ul>
+
+  <button onclick="mostrarExtra()">Clique para ver um motivo extra 💝</button>
+
+  <footer>
+    Feito com amor por [Seu Nome] 💕
+  </footer>
+
+  <script>
+    // ---- CORAÇÕES ----
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (16 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 500);
+
+    // ---- ANIMAÇÃO DE ROLAGEM ----
+    const motivos = document.querySelectorAll("li");
+    function mostrarMotivos() {
+      const triggerBottom = window.innerHeight * 0.85;
+      motivos.forEach(motivo => {
+        const boxTop = motivo.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          motivo.classList.add("show");
+        }
+      });
+    }
+    window.addEventListener("scroll", mostrarMotivos);
+    window.addEventListener("load", mostrarMotivos);
+
+    // ---- MOTIVO EXTRA ----
+    function mostrarExtra() {
+      const extra = document.getElementById("extra");
+      extra.style.display = "block";
+      extra.classList.add("show");
+    }
+  </script>
+</body>
+</html>
