@@ -186,8 +186,12 @@
     // ---- MOTIVO EXTRA ----
     function mostrarExtra() {
       const extra = document.getElementById("extra");
+      const botao = document.querySelector("button");
+     
       extra.style.display = "block";
       extra.classList.add("show");
+
+      botao.style.display = "none";
     }
 
     // ---- MOSTRAR FOTOS ----
