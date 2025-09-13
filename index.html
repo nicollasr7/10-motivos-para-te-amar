@@ -14,15 +14,16 @@
       overflow-x: hidden;
     }
     h1 {
-      color: #000000; /* rosa mais forte */
+      color: #b30059;
       margin-bottom: 0.2rem;
       font-size: 2rem;
     }
-    .descricao {
+    .info-text {
       font-size: 1rem;
-      color: #fff0f5; /* rosa clarinho */
-      margin-bottom: 2rem;
+      color: #4b004b;
       font-style: italic;
+      margin-bottom: 2rem;
+      display: block;
     }
     ul {
       list-style: none;
@@ -49,8 +50,9 @@
     #extra {
       display: none;
       background: #ffe6f0;
-      border: 2px solid #b30059;
+      border: 2px solid #6a0dad; /* mesma cor do botão */
       font-weight: bold;
+      color: #4b004b;
     }
     button {
       margin-top: 2rem;
@@ -58,7 +60,7 @@
       font-size: 1rem;
       border: none;
       border-radius: 8px;
-      background: ##b30059;
+      background: #6a0dad; /* lilás/roxo para contraste */
       color: white;
       cursor: pointer;
       transition: 0.3s;
@@ -66,7 +68,7 @@
       max-width: 90%;
     }
     button:hover {
-      background: #e60073;
+      background: #520a91;
     }
     footer {
       margin-top: 2.5rem;
@@ -117,8 +119,8 @@
   </style>
 </head>
 <body>
-  <h1>10 Motivos para amar minha princesinha 💞</h1>
-  <p class="descricao">Vai clicando em cada motivo aí embaixo mozi 👇</p>
+  <h1>10 Motivos para amar minha princesinha💞</h1>
+  <span class="info-text">Vai clicando em cada motivo ai em baixo mozi👇</span>
 
   <ul>
     <li onclick="mostrarFoto(1)">1. Você é o motivo dos meu sorriso diário</li>
@@ -145,10 +147,10 @@
     <li onclick="mostrarFoto(8)">8. Por você eu tento ser melhor a cada dia mais</li>
     <div id="foto8" class="foto"></div>
 
-    <li onclick="mostrarFoto(9)">9. Seu pexinhuuuu</li>
+    <li onclick="mostrarFoto(9)">9. Nossa filha vir com os olhinhos mais lindos que já vi</li>
     <div id="foto9" class="foto"></div>
 
-    <li onclick="mostrarFoto(10)">10. Nossa conexão é coisa de outro mundo</li>
+    <li onclick="mostrarFoto(10)">10. A conexão que a gente tem, desde o início</li>
     <div id="foto10" class="foto"></div>
 
     <li id="extra">O peido mais fedido que existeee</li>
@@ -158,7 +160,6 @@
 
   <footer>
     Para a minha princesinha 🤍
-    
   </footer>
 
   <script>
