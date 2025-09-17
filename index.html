@@ -4,7 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>10 Motivos para te Amar 🤍</title>
-  
+
+  <!-- Meta tags para SEO e compartilhamento -->
+  <meta name="description" content="Um site especial: 10 motivos para amar minha princesinha 💞">
+  <meta property="og:title" content="10 Motivos para te Amar 🤍">
+  <meta property="og:description" content="Um presente especial feito com muito amor.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="fotos/capa.jpg">
+  <meta name="robots" content="index, follow">
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   
@@ -180,7 +188,7 @@
     <li id="extra">O peido mais fedido que existeee</li>
   </ul>
 
-  <button onclick="mostrarExtra()">Mais um motivo mozi</button>
+  <button onclick="mostrarExtra()" aria-controls="extra">Mais um motivo mozi</button>
 
   <footer>
     De Nicollas, para a princesinha dele🤍
@@ -231,6 +239,13 @@
     function mostrarFoto(num) {
       const fotoDiv = document.getElementById("foto" + num);
 
+      // tenta pegar o texto do <li> para usar no alt de forma descritiva
+      const motivoLi = document.querySelector(`li[onclick="mostrarFoto(${num})"]`);
+      const motivoText = motivoLi ? motivoLi.textContent.trim().replace(/^\d+\.\s*/, '') : `Motivo ${num}`;
+      const altText = `Foto: ${motivoText}`;
+
+      if (!fotoDiv) return; // segurança caso o ID não exista
+
       if (fotoDiv.style.display === "block") {
         fotoDiv.style.display = "none";
         fotoDiv.innerHTML = "";
@@ -241,7 +256,8 @@
         });
 
         fotoDiv.style.display = "block";
-        fotoDiv.innerHTML = `<img src="fotos/foto${num}.jpg" alt="Motivo ${num}">`;
+        // técnica: lazy-load + async decoding + alt descritivo
+        fotoDiv.innerHTML = `<img src="fotos/foto${num}.jpg" alt="${altText}" loading="lazy" decoding="async">`;
       }
     }
   </script>
