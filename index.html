@@ -4,17 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>10 Motivos para te Amar 🤍</title>
-
-  <!-- Meta tags para SEO e compartilhamento -->
-  <meta name="description" content="Um site especial: 10 motivos para amar minha princesinha 💞">
-  <meta property="og:title" content="10 Motivos para te Amar 🤍">
-  <meta property="og:description" content="Um presente especial feito com muito amor.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="fotos/capa.jpg">
-
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-
+  
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -45,40 +38,26 @@
       max-width: 600px;
       margin: auto;
     }
-    /* Flip card */
-    .card {
-      perspective: 1000px;
+    li {
+      background: white;
       margin: 1rem 0;
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.8s;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.8s ease-out;
       cursor: pointer;
     }
-    .card.flip .card-inner {
-      transform: rotateY(180deg);
+    li.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-      padding: 1rem;
-      background: white;
-    }
-    .card-front {
-      font-size: 1.1rem;
-    }
-    .card-back {
-      transform: rotateY(180deg);
-    }
-    .card-back img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    li:hover {
+      background: #fff0f6;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      transform: scale(1.02);
     }
     #extra {
       display: none;
@@ -87,14 +66,13 @@
       font-weight: bold;
       color: #4b004b;
     }
-    /* Botão com gradiente */
     button {
       margin-top: 2rem;
       padding: 0.8rem 1.5rem;
       font-size: 1rem;
       border: none;
       border-radius: 8px;
-      background: linear-gradient(135deg, #ff69b4, #6a0dad);
+      background: #6a0dad;
       color: white;
       cursor: pointer;
       transition: 0.3s;
@@ -102,7 +80,7 @@
       max-width: 90%;
     }
     button:hover {
-      background: linear-gradient(135deg, #ff85c1, #520a91);
+      background: #520a91;
       transform: scale(1.05);
     }
     footer {
@@ -110,11 +88,27 @@
       font-style: italic;
       color: #555;
       font-size: 0.9rem;
-      opacity: 0;
-      animation: fadeInFooter 2s ease forwards;
     }
-    @keyframes fadeInFooter {
-      to { opacity: 1; }
+    /* Área para fotos */
+    .foto {
+      display: none;
+      margin-top: 10px;
+      animation: fadeInZoom 0.8s ease forwards;
+    }
+    .foto img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    @keyframes fadeInZoom {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     /* Corações animados */
     .heart {
@@ -137,7 +131,7 @@
       h1 {
         font-size: 2rem;
       }
-      .card-front {
+      li {
         font-size: 1rem;
         padding: 0.8rem;
       }
@@ -153,22 +147,35 @@
   <span class="info-text">Vai clicando em cada motivo ai em baixo mozi👇</span>
 
   <ul>
-    <li class="card" onclick="flipCard(this)">
-      <div class="card-inner">
-        <div class="card-front">1. Você é o motivo dos meu sorriso diário</div>
-        <div class="card-back"><img src="fotos/foto1.webp" alt="Você sorrindo, meu motivo diário" loading="lazy"></div>
-      </div>
-    </li>
+    <li onclick="mostrarFoto(1)">1. Você é o motivo dos meu sorriso diário</li>
+    <div id="foto1" class="foto"></div>
 
-    <li class="card" onclick="flipCard(this)">
-      <div class="card-inner">
-        <div class="card-front">2. Seus olhinhos verde radiantiii</div>
-        <div class="card-back"><img src="fotos/foto2.webp" alt="Seus olhos verdes radiantes" loading="lazy"></div>
-      </div>
-    </li>
+    <li onclick="mostrarFoto(2)">2. Seus olhinhos verde radiantiii</li>
+    <div id="foto2" class="foto"></div>
 
-    <!-- Repete a estrutura para os 10 motivos -->
-    <!-- ... -->
+    <li onclick="mostrarFoto(3)">3. Vote é meu porto seguruuuu</li>
+    <div id="foto3" class="foto"></div>
+
+    <li onclick="mostrarFoto(4)">4. Vote é chata (mas eu amo a minha chatice)</li>
+    <div id="foto4" class="foto"></div>
+
+    <li onclick="mostrarFoto(5)">5. Minha companheirinha</li>
+    <div id="foto5" class="foto"></div>
+
+    <li onclick="mostrarFoto(6)">6. Melhor amiga que eu pude ganhar</li>
+    <div id="foto6" class="foto"></div>
+
+    <li onclick="mostrarFoto(7)">7. O rostinho mais meiguinho que existe</li>
+    <div id="foto7" class="foto"></div>
+
+    <li onclick="mostrarFoto(8)">8. Por você eu tento ser melhor a cada dia mais</li>
+    <div id="foto8" class="foto"></div>
+
+    <li onclick="mostrarFoto(9)">9. Seu pexinhuuuuu</li>
+    <div id="foto9" class="foto"></div>
+
+    <li onclick="mostrarFoto(10)">10. A conexão que a gente tem, desde o início</li>
+    <div id="foto10" class="foto"></div>
 
     <li id="extra">O peido mais fedido que existeee</li>
   </ul>
@@ -184,10 +191,7 @@
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-
-      const emojis = ["🤍","💕","💞","💖","❤️"];
-      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
+      heart.textContent = "🤍";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = (16 + Math.random() * 20) + "px";
       heart.style.animationDuration = (3 + Math.random() * 4) + "s";
@@ -199,20 +203,47 @@
     }
     setInterval(createHeart, 1200);
 
+    // ---- ANIMAÇÃO DE ROLAGEM ----
+    const motivos = document.querySelectorAll("li");
+    function mostrarMotivos() {
+      const triggerBottom = window.innerHeight * 0.85;
+      motivos.forEach(motivo => {
+        const boxTop = motivo.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          motivo.classList.add("show");
+        }
+      });
+    }
+    window.addEventListener("scroll", mostrarMotivos);
+    window.addEventListener("load", mostrarMotivos);
+
     // ---- MOTIVO EXTRA ----
     function mostrarExtra() {
       const extra = document.getElementById("extra");
       const botao = document.querySelector("button");
-
+     
       extra.style.display = "block";
+      extra.classList.add("show");
       botao.style.display = "none";
     }
 
-    // ---- FLIP CARD ----
-    function flipCard(card) {
-      card.classList.toggle("flip");
+    // ---- MOSTRAR FOTOS (apenas imagens) ----
+    function mostrarFoto(num) {
+      const fotoDiv = document.getElementById("foto" + num);
+
+      if (fotoDiv.style.display === "block") {
+        fotoDiv.style.display = "none";
+        fotoDiv.innerHTML = "";
+      } else {
+        document.querySelectorAll(".foto").forEach(div => {
+          div.style.display = "none";
+          div.innerHTML = "";
+        });
+
+        fotoDiv.style.display = "block";
+        fotoDiv.innerHTML = `<img src="fotos/foto${num}.jpg" alt="Motivo ${num}">`;
+      }
     }
   </script>
 </body>
 </html>
-
